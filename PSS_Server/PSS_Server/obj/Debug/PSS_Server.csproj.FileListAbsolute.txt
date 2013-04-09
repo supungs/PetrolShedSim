@@ -1,0 +1,6 @@
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Server\PSS_Server\obj\Debug\ResolveAssemblyReference.cache
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Server\PSS_Server\bin\Debug\PSS_Server.dll.config
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Server\PSS_Server\bin\Debug\PSS_Server.dll
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Server\PSS_Server\bin\Debug\PSS_Server.pdb
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Server\PSS_Server\obj\Debug\PSS_Server.dll
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Server\PSS_Server\obj\Debug\PSS_Server.pdb
