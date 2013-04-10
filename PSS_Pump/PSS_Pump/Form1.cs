@@ -20,5 +20,10 @@ namespace PSS_Pump
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

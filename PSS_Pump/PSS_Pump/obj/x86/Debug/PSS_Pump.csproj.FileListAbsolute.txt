@@ -1,0 +1,10 @@
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Pump\PSS_Pump\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Pump\PSS_Pump\obj\x86\Debug\PSS_Pump.Form1.resources
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Pump\PSS_Pump\obj\x86\Debug\PSS_Pump.Properties.Resources.resources
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Pump\PSS_Pump\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Pump\PSS_Pump\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Pump\PSS_Pump\bin\Debug\PSS_Pump.exe
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Pump\PSS_Pump\bin\Debug\PSS_Pump.pdb
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Pump\PSS_Pump\obj\x86\Debug\PSS_Pump.exe
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Pump\PSS_Pump\obj\x86\Debug\PSS_Pump.pdb
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Pump\PSS_Pump\bin\Debug\PSS_Pump.exe.config

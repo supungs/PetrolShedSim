@@ -2,52 +2,56 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ServiceModel;
+using PSS_Pump.PumpServiceReference;
 
 namespace PSS_Pump
 {
-    public delegate void PumpHandler(object sender, CustomerGenerator e);
-
-    class CustomerGenerator : EventArgs
+    class MyClass : IPumpServiceCallback
     {
-        private bool ready;
-        private bool activate;
-        private bool finish;
+        #region IPumpServiceCallback Members
 
-        public CustomerGenerator()
+        public void activateMe(float price)
         {
-            ready = false;
-            activate = false;
-            finish = false;
+            Console.WriteLine("Pump activated");
+            PumpingProgress.update();
+         
         }
 
-        public bool isReady()
+        #endregion
+    }
+
+    class CustomerGenerator 
+    {
+         InstanceContext ins ;
+         PumpServiceClient x;
+
+         public CustomerGenerator()
+         {
+             ins = new InstanceContext(new MyClass());
+             x = new PumpServiceClient(ins);
+         }
+
+        public void activatePump(int id)
         {
-            return ready;
+          
+           x.subscribePump(id);
+           
         }
 
-        public bool isActivate()
+        public void customerReady(int id)
         {
-            return activate;
+            x.customerReady(id, "");
         }
 
-        public bool isFinish()
+        public void pumpingFinished(int id)
         {
-            return finish;
+            x.PumpingFinished(id, "");
         }
 
-        public void customerReady()
+        public void pumpProgress(Object o, int id, PumpingProgressEvent e)
         {
-            ready = true;
-        }
-
-        public void activatePump()
-        {
-            activate = true;
-        }
-
-        public void pumpingFinish()
-        {
-            finish = true;
+            x.pumpProgress(id," ", e.Litres);
         }
     }
 }
