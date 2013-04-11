@@ -10,3 +10,4 @@ E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Server\PSS_Server\bin\Debug\PSS_Se
 E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Server\PSS_Server\obj\Debug\ResolveAssemblyReference.cache
 E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Server\PSS_Server\obj\Debug\PSS_Server.dll
 E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Server\PSS_Server\obj\Debug\PSS_Server.pdb
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Server\PSS_Server\bin\Debug\System.Data.SQLite.xml

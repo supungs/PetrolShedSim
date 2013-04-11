@@ -101,10 +101,10 @@ namespace PSS_Pump.PumpServiceReference {
         void customerReady(int pumpNo, string fueltype);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPumpService/pumpProgress")]
-        void pumpProgress(int pumpNo, string fueltype, float amount);
+        void pumpProgress(int pumpNo, float amount);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPumpService/PumpingFinished")]
-        void PumpingFinished(int pumpNo, string fueltype);
+        void PumpingFinished(int pumpNo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -150,12 +150,12 @@ namespace PSS_Pump.PumpServiceReference {
             base.Channel.customerReady(pumpNo, fueltype);
         }
         
-        public void pumpProgress(int pumpNo, string fueltype, float amount) {
-            base.Channel.pumpProgress(pumpNo, fueltype, amount);
+        public void pumpProgress(int pumpNo, float amount) {
+            base.Channel.pumpProgress(pumpNo, amount);
         }
         
-        public void PumpingFinished(int pumpNo, string fueltype) {
-            base.Channel.PumpingFinished(pumpNo, fueltype);
+        public void PumpingFinished(int pumpNo) {
+            base.Channel.PumpingFinished(pumpNo);
         }
     }
     
@@ -217,7 +217,7 @@ namespace PSS_Pump.PumpServiceReference {
         void activatePump(int pumpNo);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPosService/recordPayment")]
-        void recordPayment(int posId, float amount);
+        void recordPayment(int posId, string fueltype, float amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPosService/unSubscribePos", ReplyAction="http://tempuri.org/IPosService/unSubscribePosResponse")]
         void unSubscribePos(int posId);
@@ -233,7 +233,7 @@ namespace PSS_Pump.PumpServiceReference {
         void pumpingProgress(int pumpNo, PSS_Pump.PumpServiceReference.FuelItem update, float price);
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IPosService/finishedPumping")]
-        void finishedPumping(int pumpNo, string fueltype, float price);
+        void finishedPumping(int pumpNo, PSS_Pump.PumpServiceReference.FuelItem fuel, float price);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -272,8 +272,8 @@ namespace PSS_Pump.PumpServiceReference {
             base.Channel.activatePump(pumpNo);
         }
         
-        public void recordPayment(int posId, float amount) {
-            base.Channel.recordPayment(posId, amount);
+        public void recordPayment(int posId, string fueltype, float amount) {
+            base.Channel.recordPayment(posId, fueltype, amount);
         }
         
         public void unSubscribePos(int posId) {

@@ -20,7 +20,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="pumpNo" type="xs:int" />
-        <xs:element minOccurs="0" name="fueltype" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="amount" type="xs:float" />
       </xs:sequence>
     </xs:complexType>
@@ -29,7 +28,6 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="pumpNo" type="xs:int" />
-        <xs:element minOccurs="0" name="fueltype" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -82,6 +80,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="posId" type="xs:int" />
+        <xs:element minOccurs="0" name="fueltype" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="amount" type="xs:float" />
       </xs:sequence>
     </xs:complexType>
@@ -119,7 +118,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="pumpNo" type="xs:int" />
-        <xs:element minOccurs="0" name="fueltype" nillable="true" type="xs:string" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PSS_Server" minOccurs="0" name="fuel" nillable="true" type="q4:FuelItem" />
         <xs:element minOccurs="0" name="price" type="xs:float" />
       </xs:sequence>
     </xs:complexType>

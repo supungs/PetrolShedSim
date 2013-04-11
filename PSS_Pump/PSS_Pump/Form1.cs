@@ -16,14 +16,21 @@ namespace PSS_Pump
             InitializeComponent();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
+        
 
+        public void setType(String fuelType)
+        {
+            fType.Text = fuelType;
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        public void setQuantity(float f)
         {
+            quantity.Text = f.ToString();
+        }
 
+        public void setPrice(float f)
+        {
+            rupees.Text = f.ToString();
         }
     }
 }
