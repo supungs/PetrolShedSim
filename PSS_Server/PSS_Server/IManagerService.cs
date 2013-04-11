@@ -21,6 +21,18 @@ namespace PSS_Server
     [DataContract]
     public class FuelItem
     {
+        public FuelItem(string type, float amount)
+        {
+            this.Type = type;
+            this.Amount = amount;
+        }
+        public FuelItem(string type, float amount,DateTime date)
+        {
+            this.Type = type;
+            this.Amount = amount;
+            this.Date = date;
+        }
+
         [DataMember]
         public string Type { get; set; }
 
