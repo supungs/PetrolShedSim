@@ -17,7 +17,7 @@ namespace PSS_Server
         void activatePump(int pumpNo);
 
         [OperationContract(IsOneWay = true)]
-        void recordPayment(int posId, float amount);
+        void recordPayment(int posId, string fueltype, float amount);
 
         [OperationContract]
         void unSubscribePos(int posId);
@@ -33,6 +33,6 @@ namespace PSS_Server
         void pumpingProgress(int pumpNo, FuelItem update, float price);
 
         [OperationContract(IsOneWay = true)]
-        void finishedPumping(int pumpNo, string fueltype, float price);
+        void finishedPumping(int pumpNo, FuelItem fuel, float price);
     }
 }

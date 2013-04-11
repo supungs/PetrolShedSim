@@ -17,10 +17,10 @@ namespace PSS_Server
         void customerReady(int pumpNo,string fueltype);
 
         [OperationContract(IsOneWay = true)]
-        void pumpProgress(int pumpNo,string fueltype, float amount);
+        void pumpProgress(int pumpNo, float amount);
 
         [OperationContract(IsOneWay = true)]
-        void PumpingFinished(int pumpNo, string fueltype);
+        void PumpingFinished(int pumpNo);
     }
 
 

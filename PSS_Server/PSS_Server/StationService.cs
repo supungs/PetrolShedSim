@@ -11,8 +11,9 @@ namespace PSS_Server
     {
         static Dictionary<int, PumpCallbackHandler> pumplist = new Dictionary<int, PumpCallbackHandler>();
         static Dictionary<int, PosCallbackHandler> poslist = new Dictionary<int, PosCallbackHandler>();
-        static Dictionary<int,int> pumptoPos = new Dictionary<int, int>();
+        static Dictionary<int, Tuple> pumptoPos = new Dictionary<int, Tuple>();
         static Dictionary<int, int> posPumpCount = new Dictionary<int, int>();
+        static Dictionary<int, float> fuelConsume = new Dictionary<int, float>();
 
         //---- Services for the Pump system ---------------------------
         public void subscribePump(int pumpNo)
@@ -35,23 +36,28 @@ namespace PSS_Server
             if (poslist.ContainsKey(posId))
             {
                 posPumpCount[posId]++;
-                pumptoPos.Add(pumpNo, posId);
+                pumptoPos.Add(pumpNo, new Tuple(posId,new FuelItem(fueltype,0)));
                 poslist[posId].customerWaiting(pumpNo, fueltype);
             }
             
         }
 
-        public void pumpProgress(int pumpNo, string fueltype, float amount)
+        public void pumpProgress(int pumpNo, float amount)
         {
-            throw new NotImplementedException();
+            int posId = pumptoPos[pumpNo].Pos;
+            float price = getPrice(pumptoPos[pumpNo].Fuel.Type);
+            pumptoPos[pumpNo].Fuel.Amount = amount;
+            poslist[posId].pumpingProgress(pumpNo, pumptoPos[pumpNo].Fuel, price);
         }
 
-        public void PumpingFinished(int pumpNo, string fueltype)
+        public void PumpingFinished(int pumpNo)
         {
-            int posId = pumptoPos[pumpNo];
+            int posId = pumptoPos[pumpNo].Pos;
             posPumpCount[posId]--;
             pumptoPos.Remove(pumpNo);
-            poslist[posId].finishedPumping(pumpNo, fueltype, 10);           // need fuel price
+            DataHandler.Instance.reduceFuel(pumptoPos[pumpNo].Fuel.Type, pumptoPos[pumpNo].Fuel.Amount);
+            float price = getPrice(pumptoPos[pumpNo].Fuel.Type);
+            poslist[posId].finishedPumping(pumpNo, pumptoPos[pumpNo].Fuel, price);
         }
 
 
@@ -68,10 +74,11 @@ namespace PSS_Server
 
         public void activatePump(int pumpNo)
         {
-            throw new NotImplementedException();
+            float price = getPrice(pumptoPos[pumpNo].Fuel.Type);
+            pumplist[pumpNo].activateMe(price);
         }
 
-        public void recordPayment(int posId, float amount)
+        public void recordPayment(int posId,string fueltype, float amount)
         {
             throw new NotImplementedException();
         }
@@ -98,5 +105,22 @@ namespace PSS_Server
             throw new NotImplementedException();
         }
 
+
+        //common functions
+        public float getPrice(string fuelType)
+        {
+            return DataHandler.Instance.getPrice(fuelType);
+        }
+    }
+
+    class Tuple
+    {
+        public Tuple(int pos, FuelItem fuel)
+        {
+            this.Pos = pos;
+            this.Fuel = fuel;
+        }
+        public int Pos { get; set; }
+        public FuelItem Fuel { get; set; }
     }
 }

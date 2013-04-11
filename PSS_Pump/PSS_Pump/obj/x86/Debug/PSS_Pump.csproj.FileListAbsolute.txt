@@ -1,0 +1,5 @@
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Pump\PSS_Pump\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Pump\PSS_Pump\obj\x86\Debug\PSS_Pump.Form1.resources
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Pump\PSS_Pump\obj\x86\Debug\PSS_Pump.Properties.Resources.resources
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Pump\PSS_Pump\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Pump\PSS_Pump\obj\x86\Debug\GenerateResource.write.1.tlog
