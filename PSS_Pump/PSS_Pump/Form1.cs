@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using PumpLibrary;
 
 namespace PSS_Pump
 {
@@ -16,21 +17,31 @@ namespace PSS_Pump
             InitializeComponent();
         }
 
-        
 
         public void setType(String fuelType)
         {
-            fType.Text = fuelType;
+            label1.Text = "Fuel Type: "+ fuelType;
         }
 
         public void setQuantity(float f)
         {
-            quantity.Text = f.ToString();
+            label2.Text = "Liters: "+ f.ToString();
         }
 
-        public void setPrice(float f)
+        public void setPrice(string p)
         {
-            rupees.Text = f.ToString();
+            label3.Text = "Price: "+ p;
         }
+
+        public void setStatus(string st)
+        {
+            label4.Text = "Status: " + st;
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Subscriber sub = new Subscriber(this);
+            sub.startSubscriber();
+        }
+
     }
 }

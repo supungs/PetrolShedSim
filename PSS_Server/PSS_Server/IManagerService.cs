@@ -15,6 +15,12 @@ namespace PSS_Server
 
         [OperationContract]
         FuelItem[] getSaleData();
+
+        [OperationContract]
+        int getNumofCustomers();
+
+        [OperationContract]
+        FuelItem[] getFuelOrders();
     }
 
 
@@ -26,10 +32,11 @@ namespace PSS_Server
             this.Type = type;
             this.Amount = amount;
         }
-        public FuelItem(string type, float amount,DateTime date)
+        public FuelItem(string type, float amount,float value ,DateTime date)
         {
             this.Type = type;
             this.Amount = amount;
+            this.Value = value;
             this.Date = date;
         }
 
@@ -38,6 +45,9 @@ namespace PSS_Server
 
         [DataMember]
         public float Amount { get; set; }
+
+        [DataMember]
+        public float Value { get; set; }
 
         [DataMember]
         public DateTime Date { get; set; }

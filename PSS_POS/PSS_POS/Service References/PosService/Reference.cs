@@ -31,6 +31,9 @@ namespace PSS_POS.PosService {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TypeField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float ValueField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -76,6 +79,19 @@ namespace PSS_POS.PosService {
                 if ((object.ReferenceEquals(this.TypeField, value) != true)) {
                     this.TypeField = value;
                     this.RaisePropertyChanged("Type");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((this.ValueField.Equals(value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
                 }
             }
         }
@@ -168,6 +184,12 @@ namespace PSS_POS.PosService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagerService/getSaleData", ReplyAction="http://tempuri.org/IManagerService/getSaleDataResponse")]
         PSS_POS.PosService.FuelItem[] getSaleData();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagerService/getNumofCustomers", ReplyAction="http://tempuri.org/IManagerService/getNumofCustomersResponse")]
+        int getNumofCustomers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagerService/getFuelOrders", ReplyAction="http://tempuri.org/IManagerService/getFuelOrdersResponse")]
+        PSS_POS.PosService.FuelItem[] getFuelOrders();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -203,6 +225,14 @@ namespace PSS_POS.PosService {
         
         public PSS_POS.PosService.FuelItem[] getSaleData() {
             return base.Channel.getSaleData();
+        }
+        
+        public int getNumofCustomers() {
+            return base.Channel.getNumofCustomers();
+        }
+        
+        public PSS_POS.PosService.FuelItem[] getFuelOrders() {
+            return base.Channel.getFuelOrders();
         }
     }
     

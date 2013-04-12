@@ -132,7 +132,7 @@
             this.cmbofuel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbofuel.FormattingEnabled = true;
             this.cmbofuel.Items.AddRange(new object[] {
-            "Petrol",
+            "Unleaded",
             "Diesel"});
             this.cmbofuel.Location = new System.Drawing.Point(94, 33);
             this.cmbofuel.Name = "cmbofuel";

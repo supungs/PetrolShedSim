@@ -5,6 +5,7 @@ using System.Text;
 using System.ServiceModel;
 using PSS_Pump.PumpServiceReference;
 using PumpLibrary;
+using System.Windows.Forms;
 
 namespace PSS_Pump
 {
@@ -21,9 +22,7 @@ namespace PSS_Pump
         public void activateMe(float price)
         {
             cGen.ActivatePump();
-            Console.WriteLine("Pump activated");
-            
-         
+            Subscriber.price = price;
         }
 
         #endregion
@@ -32,18 +31,14 @@ namespace PSS_Pump
   public  class Subscriber 
     {
          static int id;
+         public static float price;
          InstanceContext ins ;
          PumpServiceClient pClient;
          CustomerGenerator gen;
          Form1 form;
 
-         public Subscriber(CustomerGenerator cGen)
+         public Subscriber(Form1 f)
          {
-             ins = new InstanceContext(new MyClass(cGen));
-             pClient= new PumpServiceClient(ins);
-             gen = cGen;
-             form = new Form1();
-
              if (id <= 20)
              {
                  id = id + 1;
@@ -52,48 +47,68 @@ namespace PSS_Pump
              {
                  id = 1;
              }
-             
-             ready();
-             progress();
-             finish();
+             form = f;
+             Random rnd = new Random();
+             id = rnd.Next(20);
          }
 
-         public void ready()
+         public void startSubscriber()
          {
-             gen.CustomerReady += new CustomerGenerator.CustomerReadyHandler(gen_CustomerReady);
-            
+                 gen = new CustomerGenerator();
+                 gen.CustomerReady += gen_CustomerReady;
+                 gen.PumpProgress += gen_PumpProgress;
+                 gen.PumpingFinished += gen_PumpingFinished;
          }
 
          void gen_CustomerReady(object sender, CustomerReadyEventArgs e)
          {
-             
-             pClient.subscribePump(id);
-             form.setType(e.SelectedFuel.ToString());
-             form.setQuantity(0);
-             form.setPrice(0);
-         }
-
-         public void progress()
-         {
-             gen.PumpProgress += new CustomerGenerator.PumpProgressHandler(gen_PumpProgress);
-         }
+             if (pClient == null)
+             {
+                 ins = new InstanceContext(new MyClass(gen));
+                 pClient = new PumpServiceClient(ins);
+                 pClient.subscribePump(id);
+             }
+             try
+             { 
+                 form.Invoke((MethodInvoker)delegate
+                 {
+                     form.setType(e.SelectedFuel.ToString());
+                     form.setQuantity(0);
+                     form.setPrice("0");
+                     form.setStatus("Customer waiting");
+                 });
+                 pClient.customerReady(id,e.SelectedFuel.ToString().ToLower());
+             }
+             catch (InvalidOperationException ee)
+             {
+             }
+        }
 
          void gen_PumpProgress(object sender, PumpProgressEventArgs e)
          {
-             
-             pClient.pumpProgress(id, (float)e.LitresPumped);
-             form.setQuantity((float)e.LitresPumped);
-             
-         }
-
-         public void finish()
-         {
-             gen.PumpingFinished += new CustomerGenerator.PumpingFinishedHandler(gen_PumpingFinished);
+             try
+             {
+                 form.Invoke((MethodInvoker)delegate
+                 {
+                     form.setQuantity((float)e.LitresPumped);
+                     form.setPrice( ""+ Subscriber.price * e.LitresPumped);
+                     form.setStatus("Customer pumping");
+                 });
+                 pClient.pumpProgress(id, (float)e.LitresPumped);
+             }
+             catch (InvalidOperationException ee)
+             {
+                 MessageBox.Show("InvalidOperationException");
+             }
          }
 
          void gen_PumpingFinished(object sender, EventArgs e)
          {
              pClient.PumpingFinished(id);
+             form.Invoke((MethodInvoker)delegate
+             {
+                 form.setStatus("Customer finished pumping");
+             });
          }
 
          public int ID

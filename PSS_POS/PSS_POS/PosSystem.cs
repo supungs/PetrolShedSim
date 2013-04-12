@@ -61,12 +61,7 @@ namespace PSS_POS
 
         public void customerWaiting(int pumpNo, string fueltype)
         {
-            DialogResult dialogResult = MessageBox.Show("Customer waiting at Pump" + pumpNo 
-                + " for "+fueltype+ ". Acitivate the pump?", "Customer waiting", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
                 posf.pumpReady(pumpNo,fueltype);
-            }
         }
 
         public void pumpingProgress(int pumpNo, FuelItem update, float price)

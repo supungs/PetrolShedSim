@@ -62,6 +62,30 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="getNumofCustomers">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getNumofCustomersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="getNumofCustomersResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFuelOrders">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getFuelOrdersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PSS_Server" minOccurs="0" name="getFuelOrdersResult" nillable="true" type="q3:ArrayOfFuelItem" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="subscribePos">
     <xs:complexType>
       <xs:sequence>
@@ -109,7 +133,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="pumpNo" type="xs:int" />
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PSS_Server" minOccurs="0" name="update" nillable="true" type="q3:FuelItem" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PSS_Server" minOccurs="0" name="update" nillable="true" type="q4:FuelItem" />
         <xs:element minOccurs="0" name="price" type="xs:float" />
       </xs:sequence>
     </xs:complexType>
@@ -118,7 +142,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="pumpNo" type="xs:int" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PSS_Server" minOccurs="0" name="fuel" nillable="true" type="q4:FuelItem" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PSS_Server" minOccurs="0" name="fuel" nillable="true" type="q5:FuelItem" />
         <xs:element minOccurs="0" name="price" type="xs:float" />
       </xs:sequence>
     </xs:complexType>

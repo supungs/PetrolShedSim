@@ -56,10 +56,16 @@ namespace PSS_POS
 
         public void pumpReady(int pumpNo, string fueltype)
         {
-            PumpComponent pump = new PumpComponent();
-            pump.initPump(pumpNo, fueltype);
-            pumplist.Add(pumpNo, pump);
-            flPanel.Controls.Add(pump);
+            DialogResult dialogResult = MessageBox.Show("Customer waiting at Pump" + pumpNo
+                    + " for " + fueltype + ". Acitivate the pump?", "Customer waiting", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                PumpComponent pump = new PumpComponent();
+                pump.initPump(pumpNo, fueltype);
+                pumplist.Add(pumpNo, pump);
+                flPanel.Controls.Add(pump);
+                poss.activatePump(pumpNo);
+            }
         }
         public void pumpUpdate(int id, float amount, float price)
         {
@@ -88,11 +94,11 @@ namespace PSS_POS
         {
             if (txtpay.Text != "")
             {
-                //try
+                try
                 {
                     poss.recordPayment(posID, cmbofuel.SelectedItem.ToString(), float.Parse(txtpay.Text));
                 }
-                //catch
+                catch
                 {
                     MessageBox.Show("Please enter a valid payment value.","Invalid value", MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
