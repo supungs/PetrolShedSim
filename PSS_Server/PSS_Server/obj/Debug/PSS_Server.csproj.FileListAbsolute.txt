@@ -11,3 +11,5 @@ E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Server\PSS_Server\obj\Debug\Resolv
 E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Server\PSS_Server\obj\Debug\PSS_Server.dll
 E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Server\PSS_Server\obj\Debug\PSS_Server.pdb
 E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Server\PSS_Server\bin\Debug\System.Data.SQLite.xml
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Server\PSS_Server\bin\Debug\System.Data.SQLite.dll
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Server\PSS_Server\bin\Debug\System.Data.SQLite.xml

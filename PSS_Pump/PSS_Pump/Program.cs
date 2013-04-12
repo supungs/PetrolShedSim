@@ -16,11 +16,8 @@ namespace PSS_Pump
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             Application.Run(new Form1());
-
-            CustomerGenerator x = new CustomerGenerator();
-            Subscriber sub = new Subscriber(x);
-
             
         }
 

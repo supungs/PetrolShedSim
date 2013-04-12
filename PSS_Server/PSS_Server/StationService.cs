@@ -54,10 +54,10 @@ namespace PSS_Server
         {
             int posId = pumptoPos[pumpNo].Pos;
             posPumpCount[posId]--;
-            pumptoPos.Remove(pumpNo);
             DataHandler.Instance.reduceFuel(pumptoPos[pumpNo].Fuel.Type, pumptoPos[pumpNo].Fuel.Amount);
             float price = getPrice(pumptoPos[pumpNo].Fuel.Type);
             poslist[posId].finishedPumping(pumpNo, pumptoPos[pumpNo].Fuel, price);
+            pumptoPos.Remove(pumpNo);
         }
 
 
@@ -65,6 +65,7 @@ namespace PSS_Server
         //---- Services for the POS system  -------------------
         public void subscribePos(int posId)
         {
+            getPrice("unleaded");
             if (!poslist.ContainsKey(posId))
             {
                 poslist.Add(posId, OperationContext.Current.GetCallbackChannel<PosCallbackHandler>());
@@ -80,7 +81,7 @@ namespace PSS_Server
 
         public void recordPayment(int posId,string fueltype, float amount)
         {
-            throw new NotImplementedException();
+            DataHandler.Instance.updateSale(fueltype,amount);
         }
 
         public void unSubscribePos(int posId)
@@ -97,14 +98,23 @@ namespace PSS_Server
         //---- Services for the Manager system  ----------------
         public FuelItem[] getFuelLevels()
         {
-            throw new NotImplementedException();
+            return DataHandler.Instance.getFuelLevel();
         }
 
         public FuelItem[] getSaleData()
         {
-            throw new NotImplementedException();
+            return DataHandler.Instance.getSaleData();
         }
 
+        public int getNumofCustomers()
+        {
+            return pumptoPos.Count;
+        }
+
+        public FuelItem[] getFuelOrders()
+        {
+            return DataHandler.Instance.getFuelOrders();
+        }
 
         //common functions
         public float getPrice(string fuelType)

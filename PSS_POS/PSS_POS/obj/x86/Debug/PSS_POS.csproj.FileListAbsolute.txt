@@ -1,0 +1,11 @@
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_POS\PSS_POS\bin\Debug\PSS_POS.exe.config
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_POS\PSS_POS\bin\Debug\PSS_POS.exe
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_POS\PSS_POS\bin\Debug\PSS_POS.pdb
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_POS\PSS_POS\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_POS\PSS_POS\obj\x86\Debug\PSS_POS.PosForm.resources
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_POS\PSS_POS\obj\x86\Debug\PSS_POS.Properties.Resources.resources
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_POS\PSS_POS\obj\x86\Debug\PSS_POS.PumpComponent.resources
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_POS\PSS_POS\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_POS\PSS_POS\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_POS\PSS_POS\obj\x86\Debug\PSS_POS.exe
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_POS\PSS_POS\obj\x86\Debug\PSS_POS.pdb

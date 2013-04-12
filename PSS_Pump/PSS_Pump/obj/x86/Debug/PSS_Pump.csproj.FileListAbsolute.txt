@@ -14,3 +14,8 @@ E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Pump\PSS_Pump\bin\Debug\PSS_Pump.e
 E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Pump\PSS_Pump\bin\Debug\PSS_Pump.pdb
 E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Pump\PSS_Pump\bin\Debug\PumpLibrary.dll
 E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Pump\PSS_Pump\obj\x86\Debug\PSS_Pump.pdb
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Pump\PSS_Pump\bin\Debug\PSS_Pump.exe.config
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Pump\PSS_Pump\obj\x86\Debug\PSS_Pump.exe
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Pump\PSS_Pump\obj\x86\Debug\PSS_Pump.pdb
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Pump\PSS_Pump\bin\Debug\PSS_Pump.exe
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Pump\PSS_Pump\bin\Debug\PSS_Pump.pdb

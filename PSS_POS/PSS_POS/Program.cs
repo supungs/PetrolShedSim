@@ -15,7 +15,10 @@ namespace PSS_POS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            PosForm posf = new PosForm();
+            PosSystem poss = new PosSystem(posf);
+            posf.setPosSystem(poss);
+            Application.Run(posf);
         }
     }
 }
