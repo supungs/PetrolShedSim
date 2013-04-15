@@ -44,5 +44,10 @@ namespace PSS_POS
         {
             this.Dispose();
         }
+
+        private void lbl_fueltype_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

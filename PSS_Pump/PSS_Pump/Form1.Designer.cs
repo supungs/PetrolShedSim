@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +47,16 @@
             this.groupBox1.Size = new System.Drawing.Size(201, 210);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(23, 158);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(141, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Status: Waiting for Customer";
             // 
             // label3
             // 
@@ -74,15 +84,6 @@
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Fuel Type:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 158);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(141, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Status: Waiting for Customer";
             // 
             // Form1
             // 

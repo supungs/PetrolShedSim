@@ -9,3 +9,14 @@ E:\Pen backup\Job\PetrolShed\VS Project\PSS_POS\PSS_POS\obj\x86\Debug\GenerateRe
 E:\Pen backup\Job\PetrolShed\VS Project\PSS_POS\PSS_POS\obj\x86\Debug\GenerateResource.write.1.tlog
 E:\Pen backup\Job\PetrolShed\VS Project\PSS_POS\PSS_POS\obj\x86\Debug\PSS_POS.exe
 E:\Pen backup\Job\PetrolShed\VS Project\PSS_POS\PSS_POS\obj\x86\Debug\PSS_POS.pdb
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_POS\PSS_POS\bin\Debug\PSS_POS.exe.config
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_POS\PSS_POS\obj\x86\Debug\PSS_POS.exe
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_POS\PSS_POS\obj\x86\Debug\PSS_POS.pdb
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_POS\PSS_POS\bin\Debug\PSS_POS.exe
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_POS\PSS_POS\bin\Debug\PSS_POS.pdb
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_POS\PSS_POS\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_POS\PSS_POS\obj\x86\Debug\PSS_POS.PosForm.resources
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_POS\PSS_POS\obj\x86\Debug\PSS_POS.Properties.Resources.resources
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_POS\PSS_POS\obj\x86\Debug\PSS_POS.PumpComponent.resources
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_POS\PSS_POS\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_POS\PSS_POS\obj\x86\Debug\GenerateResource.write.1.tlog
