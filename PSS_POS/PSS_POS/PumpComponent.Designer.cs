@@ -55,6 +55,7 @@
             this.lbl_fueltype.TabIndex = 1;
             this.lbl_fueltype.Tag = "";
             this.lbl_fueltype.Text = "Fuel Type: Petrol";
+            this.lbl_fueltype.Click += new System.EventHandler(this.lbl_fueltype_Click);
             // 
             // lbl_amount
             // 
