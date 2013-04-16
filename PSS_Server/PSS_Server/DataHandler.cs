@@ -5,6 +5,8 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Data;
+using PSS_Server.FuelSupplyService;
+using PSS_Server.ReportService;
 
 namespace PSS_Server
 {
@@ -46,7 +48,7 @@ namespace PSS_Server
             command.ExecuteNonQuery();
             command = new SQLiteCommand("create table fuelsale (date varchar(20) PRIMARY KEY,volunleaded real,voldiesel real, saleunleaded real,salediesel real )", dbConnection);
             command.ExecuteNonQuery();
-            command = new SQLiteCommand("create table fuelorders (orderid int PRIMARY KEY, date DATETIME, fueltype varchar(20), volume real,cost real )", dbConnection);
+            command = new SQLiteCommand("create table fuelorders (orderid varchar(20) PRIMARY KEY, date DATETIME, fueltype varchar(20), volume real,cost real )", dbConnection);
             command.ExecuteNonQuery();
 
             command = new SQLiteCommand("insert into tank (fueltype, volume,capacity,price) values ('unleaded', 1000,1000,13)", dbConnection);
@@ -94,6 +96,8 @@ namespace PSS_Server
                 command.ExecuteNonQuery();
             }
             dbConnection.Close();
+
+            checkFuelLevels();
         }
 
         public void updateSale( string fueltype, float amount)
@@ -131,6 +135,15 @@ namespace PSS_Server
             return arr;
         }
 
+        public void checkFuelLevels(){
+            FuelItem[] flvl = getFuelLevel();
+            for (int i = 0; i < 2; i++)
+            {
+                if (flvl[i].Amount < 200)
+                    orderFuel(flvl[i].Type, 800);
+            }
+        }
+
         public FuelItem[] getSaleData()
         {
             dbConnection.Open();
@@ -152,6 +165,22 @@ namespace PSS_Server
             return arr;
         }
 
+        public void orderFuel(string fueltype, int amount)
+        {
+            FuelSupplyServiceClient fsclient = new FuelSupplyServiceClient();
+            FuelPurchaseOrder fporder = new FuelPurchaseOrder();
+            fporder.FuelType = fueltype;
+            fporder.Quantity = amount;
+            FuelPurchaseConfirmation fpconfirm=  fsclient.PurchaseFuel(fporder);
+
+            dbConnection.Open();
+            SQLiteCommand command = new SQLiteCommand("insert into fuelorders (orderid, date, fueltype, volume,cost) values('" +
+                    fpconfirm.OrderReference + "',strftime('%Y-%m-%d', 'now'),'" + fueltype + "'," + amount + "," + fpconfirm.TotalPrice + ")", dbConnection);
+            command.ExecuteNonQuery();
+            command = new SQLiteCommand("update tank set volume=volume+" + amount + " where fueltype='" + fueltype + "'", dbConnection);
+            command.ExecuteNonQuery();
+            dbConnection.Close();
+        }
 
         public FuelItem[] getFuelOrders()
         {
@@ -173,6 +202,50 @@ namespace PSS_Server
             }
             dbConnection.Close();
             return arr;
+        }
+
+        public void sendReports()
+        {
+            ReportServiceClient rclient = new ReportServiceClient();
+            DailyReport dr = new DailyReport();
+            dr.Date = DateTime.Now.Date;
+            FuelItem[] prchs=getFuelOrders();
+            FuelData[] purchase = new FuelData[2];
+
+            purchase[0] = new FuelData();
+            purchase[1] = new FuelData(); 
+            for (int i = 0; i < prchs.Length; i++)
+			{
+			    if(prchs[i]!=null && prchs[i].Date==dr.Date)
+                {
+                    int ind = 1;
+                    if (prchs[i].Type == "unleaded")
+                        ind = 0;
+                    purchase[ind].FuelType = prchs[i].Type;
+                    purchase[ind].Quantity += prchs[i].Amount;
+                    purchase[ind].Value += prchs[i].Value;
+                 }
+			}
+            dr.Purchases = purchase;
+
+            FuelItem[] sl = getSaleData();
+            FuelData[] sales=new FuelData[2];
+            sales[0] = new FuelData();
+            sales[1] = new FuelData(); 
+            for (int i = 0; i < sl.Length; i++)
+            {
+                if (sl[i] != null && sl[i].Date == dr.Date)
+                {
+                    int ind = 1;
+                    if (sl[i].Type == "unleaded")
+                        ind = 0;
+                    sales[ind].FuelType = sl[i].Type;
+                    sales[ind].Quantity = sl[i].Amount;
+                    sales[ind].Value = sl[i].Value;
+                }
+            }
+            dr.Sales = sales;
+            rclient.SendDailyReport(dr);
         }
 
         public Boolean tableExist(String tableName)

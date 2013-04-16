@@ -8,3 +8,13 @@ E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Manager\PSS_Manager\PSS_Manager\bi
 E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Manager\PSS_Manager\PSS_Manager\bin\Debug\PSS_Manager.pdb
 E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Manager\PSS_Manager\PSS_Manager\obj\x86\Debug\PSS_Manager.exe
 E:\Petrol Shed Project\Repo\PetrolShedSim\PSS_Manager\PSS_Manager\PSS_Manager\obj\x86\Debug\PSS_Manager.pdb
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Manager\PSS_Manager\PSS_Manager\bin\Debug\PSS_Manager.exe.config
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Manager\PSS_Manager\PSS_Manager\obj\x86\Debug\PSS_Manager.exe
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Manager\PSS_Manager\PSS_Manager\bin\Debug\PSS_Manager.exe
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Manager\PSS_Manager\PSS_Manager\bin\Debug\PSS_Manager.pdb
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Manager\PSS_Manager\PSS_Manager\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Manager\PSS_Manager\PSS_Manager\obj\x86\Debug\PSS_Manager.Form1.resources
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Manager\PSS_Manager\PSS_Manager\obj\x86\Debug\PSS_Manager.Properties.Resources.resources
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Manager\PSS_Manager\PSS_Manager\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Manager\PSS_Manager\PSS_Manager\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\Pen backup\Job\PetrolShed\VS Project\PSS_Manager\PSS_Manager\PSS_Manager\obj\x86\Debug\PSS_Manager.pdb

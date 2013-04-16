@@ -98,6 +98,7 @@ namespace PSS_Server
         //---- Services for the Manager system  ----------------
         public FuelItem[] getFuelLevels()
         {
+            DataHandler.Instance.sendReports();
             return DataHandler.Instance.getFuelLevel();
         }
 
@@ -108,6 +109,7 @@ namespace PSS_Server
 
         public int getNumofCustomers()
         {
+            
             return pumptoPos.Count;
         }
 

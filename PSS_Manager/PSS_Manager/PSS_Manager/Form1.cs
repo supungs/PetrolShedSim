@@ -62,7 +62,7 @@ namespace PSS_Manager
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DateTime date = dateTimePicker1.Value;
+            DateTime date = dateTimePicker1.Value.Date;
             String[,] temp = msys.getSales(date);
 
             int max_row = temp.GetUpperBound(0);

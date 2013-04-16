@@ -39,7 +39,7 @@ namespace PSS_Manager
             int j = 0;
             for (int i = 0; i < x.Length; i++)
             {
-                if (x[i].Date == date)
+                if (x[i]!=null && x[i].Date == date)
                 {
                     fuelSales[j, 0] = x[i].Type;
                     fuelSales[j, 1] = x[i].Amount.ToString();
