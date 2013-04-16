@@ -48,7 +48,7 @@ namespace PSS_Server
             command.ExecuteNonQuery();
             command = new SQLiteCommand("create table fuelsale (date varchar(20) PRIMARY KEY,volunleaded real,voldiesel real, saleunleaded real,salediesel real )", dbConnection);
             command.ExecuteNonQuery();
-            command = new SQLiteCommand("create table fuelorders (orderid varchar(20) PRIMARY KEY, date DATETIME, fueltype varchar(20), volume real,cost real )", dbConnection);
+            command = new SQLiteCommand("create table fuelorders (orderid INTEGER PRIMARY KEY AUTOINCREMENT, date DATETIME, fueltype varchar(20), volume real,cost real )", dbConnection);
             command.ExecuteNonQuery();
 
             command = new SQLiteCommand("insert into tank (fueltype, volume,capacity,price) values ('unleaded', 1000,1000,13)", dbConnection);
@@ -56,6 +56,10 @@ namespace PSS_Server
             command = new SQLiteCommand("insert into tank (fueltype, volume,capacity,price) values ('diesel', 1000,1000,10)", dbConnection);
             command.ExecuteNonQuery();
 
+            command = new SQLiteCommand("update tank set volume=999 where fueltype='diesel'", dbConnection);
+            command.ExecuteNonQuery();
+            command = new SQLiteCommand("update tank set volume=999 where fueltype='unleaded'", dbConnection);
+            command.ExecuteNonQuery();
             dbConnection.Close();
         }
 
@@ -70,7 +74,7 @@ namespace PSS_Server
                 while (myReader.Read())
                 {
                     string a = myReader["price"].ToString();
-                    price = float.Parse(a);
+                    price = myReader.GetFloat(3);
                 }
                 prices.Add(fueltype, price);
                 dbConnection.Close();
@@ -126,9 +130,8 @@ namespace PSS_Server
             int i = 0;
             while (myReader.Read())
             {
-                string a = myReader["volume"].ToString();
                 string fuel=myReader["fueltype"].ToString();
-                arr[i] = new FuelItem(fuel,float.Parse(a));
+                arr[i] = new FuelItem(fuel, myReader.GetFloat(1));
                 i++;
             }
             dbConnection.Close();
@@ -157,12 +160,21 @@ namespace PSS_Server
                 DateTime date = DateTime.Parse(myReader["date"].ToString());
                 if (date <= DateTime.Now.AddDays(-7))
                     continue;
-                arr[i] = new FuelItem("unleaded", float.Parse(myReader["volunleaded"].ToString()), float.Parse(myReader["saleunleaded"].ToString()), date);
-                arr[i + 1] = new FuelItem("diesel", float.Parse(myReader["voldiesel"].ToString()), float.Parse(myReader["salediesel"].ToString()), date);
+                arr[i] = new FuelItem("unleaded", myReader.GetFloat(1), myReader.GetFloat(3), date);
+                arr[i + 1] = new FuelItem("diesel", myReader.GetFloat(2), myReader.GetFloat(4), date);
                 i = i+ 2;
             }
             dbConnection.Close();
             return arr;
+        }
+
+        public void setPrice(string fueltype, float price)
+        {
+            dbConnection.Open();
+            string sql="update tank set price=" + price + " where fueltype='" + fueltype + "'";
+            SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+            command.ExecuteNonQuery(); 
+            dbConnection.Close();
         }
 
         public void orderFuel(string fueltype, int amount)
@@ -174,8 +186,7 @@ namespace PSS_Server
             FuelPurchaseConfirmation fpconfirm=  fsclient.PurchaseFuel(fporder);
 
             dbConnection.Open();
-            SQLiteCommand command = new SQLiteCommand("insert into fuelorders (orderid, date, fueltype, volume,cost) values('" +
-                    fpconfirm.OrderReference + "',strftime('%Y-%m-%d', 'now'),'" + fueltype + "'," + amount + "," + fpconfirm.TotalPrice + ")", dbConnection);
+            SQLiteCommand command = new SQLiteCommand("insert into fuelorders ( date, fueltype, volume,cost) values(strftime('%Y-%m-%d', 'now'),'" + fueltype + "'," + amount + "," + fpconfirm.TotalPrice + ")", dbConnection);
             command.ExecuteNonQuery();
             command = new SQLiteCommand("update tank set volume=volume+" + amount + " where fueltype='" + fueltype + "'", dbConnection);
             command.ExecuteNonQuery();
@@ -195,9 +206,7 @@ namespace PSS_Server
                 if (date <= DateTime.Now.AddDays(-7))
                     continue;
                 string fuel = myReader["fueltype"].ToString();
-                string vol = myReader["volume"].ToString();
-                string cost = myReader["cost"].ToString();
-                arr[i] = new FuelItem(fuel, float.Parse(vol), float.Parse(vol),date);
+                arr[i] = new FuelItem(fuel, myReader.GetFloat(2), myReader.GetFloat(3), date);
                 i++;
             }
             dbConnection.Close();

@@ -25,58 +25,68 @@ namespace PSS_Manager
 
         private void fuelLevel_Click(object sender, EventArgs e)
         {
+            listView1.Items.Clear();
             String[,] temp = msys.getFuelLevels();
-            int max_row = temp.GetUpperBound(0);
-            int max_col = temp.GetUpperBound(1);
-            for (int row = 0; row < max_row; row++)
+            for (int row = 0; row < 2; row++)
             {
                 ListViewItem new_item = listView1.Items.Add(temp[row, 0]);
-                for (int col = 1; col <= max_col; col++)
-                {
-                    new_item.SubItems.Add(temp[row, col]);
-                }
+                new_item.SubItems.Add(temp[row, 1]);
             }
 
             listView1.Show();
-            
-            
+            this.Text = "Fuel Levels";
         }
 
         private void fuelOrder_Click(object sender, EventArgs e)
         {
+            listView1.Items.Clear();
             String[,] temp = msys.getOrderDetails();
-            int max_row = temp.GetUpperBound(0);
-            int max_col = temp.GetUpperBound(1);
-            for (int row = 0; row < max_row; row++)
+            for (int row = 0; row < 2 ; row++)
             {
                 ListViewItem new_item = listView1.Items.Add(temp[row, 0]);
-                for (int col = 1; col <= max_col; col++)
-                {
-                    new_item.SubItems.Add(temp[row, col]);
-                }
+                new_item.SubItems.Add(temp[row, 1]);
+                new_item.SubItems.Add(temp[row, 2]);
             }
 
             listView1.Show();
-
+            this.Text = "Fuel Orders";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            listView1.Items.Clear();
             DateTime date = dateTimePicker1.Value.Date;
             String[,] temp = msys.getSales(date);
 
-            int max_row = temp.GetUpperBound(0);
-            int max_col = temp.GetUpperBound(1);
-            for (int row = 0; row < max_row; row++)
+            for (int row = 0; row < 2; row++)
             {
                 ListViewItem new_item = listView1.Items.Add(temp[row, 0]);
-                for (int col = 1; col <= max_col; col++)
-                {
-                    new_item.SubItems.Add(temp[row, col]);
-                }
+                new_item.SubItems.Add(temp[row, 1]);
+                new_item.SubItems.Add(temp[row, 2]);
             }
 
             listView1.Show();
+            this.Text = "Fuel Sales";
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            cmbfuel.SelectedIndex = 0;
+        }
+
+        private void txtprice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !(e.KeyChar == '.');
+        }
+
+        private void btnprice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                msys.setPrice(cmbfuel.SelectedItem.ToString().ToLower(), float.Parse(txtprice.Text));
+            }
+            catch (FormatException) { }
+          
         }
 
 

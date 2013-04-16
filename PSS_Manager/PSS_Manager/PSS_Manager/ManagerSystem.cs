@@ -60,8 +60,10 @@ namespace PSS_Manager
             float unleadedVol = 0;
             float unleadedost = 0;
 
-            for (int i = 0; i < x.Length; i++)
+            for ( int i = 0; i < x.Length; i++)
             {
+                if (x[i] == null)
+                    break;
                 if (x[i].Type == "unleaded")
                 {
                     unleadedVol += x[i].Amount;
@@ -77,6 +79,10 @@ namespace PSS_Manager
             fuelOrders[1, 0] = "Diesel"; fuelOrders[1, 1] = dieselVol.ToString(); fuelOrders[1, 2] = dieselCost.ToString();
             return fuelOrders;
 
+        }
+        public void setPrice(string fueltype, float price)
+        {
+            managerClient.setPrice(fueltype,price);
         }
 
     }

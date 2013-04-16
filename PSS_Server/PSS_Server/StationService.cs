@@ -109,7 +109,7 @@ namespace PSS_Server
 
         public int getNumofCustomers()
         {
-            
+            DataHandler.Instance.setPrice("diesel", (float)1.2);
             return pumptoPos.Count;
         }
 
@@ -118,11 +118,17 @@ namespace PSS_Server
             return DataHandler.Instance.getFuelOrders();
         }
 
+        public void setPrice(string fueltype, float price)
+        {
+            DataHandler.Instance.setPrice(fueltype, price);
+        }
+
         //common functions
         public float getPrice(string fuelType)
         {
             return DataHandler.Instance.getPrice(fuelType);
         }
+
     }
 
     class Tuple
