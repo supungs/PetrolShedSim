@@ -86,6 +86,14 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="setPrice">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fueltype" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="price" type="xs:float" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="subscribePos">
     <xs:complexType>
       <xs:sequence>

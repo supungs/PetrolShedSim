@@ -32,7 +32,6 @@
             this.cnctBtn = new System.Windows.Forms.Button();
             this.txtPosId = new System.Windows.Forms.TextBox();
             this.lbl_posId = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.grppayment = new System.Windows.Forms.GroupBox();
             this.btnpay = new System.Windows.Forms.Button();
             this.txtpay = new System.Windows.Forms.TextBox();
@@ -83,16 +82,6 @@
             this.lbl_posId.Size = new System.Drawing.Size(53, 15);
             this.lbl_posId.TabIndex = 3;
             this.lbl_posId.Text = "POS ID";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(767, 375);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // grppayment
             // 
@@ -178,11 +167,11 @@
             this.ClientSize = new System.Drawing.Size(893, 406);
             this.Controls.Add(this.grpconn);
             this.Controls.Add(this.grppayment);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.flPanel);
             this.Name = "PosForm";
             this.Padding = new System.Windows.Forms.Padding(5);
-            this.Text = "Form1";
+            this.Text = "POS Terminal";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PosForm_FormClosing);
             this.grppayment.ResumeLayout(false);
             this.grppayment.PerformLayout();
             this.grpconn.ResumeLayout(false);
@@ -197,7 +186,6 @@
         private System.Windows.Forms.Button cnctBtn;
         private System.Windows.Forms.TextBox txtPosId;
         private System.Windows.Forms.Label lbl_posId;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox grppayment;
         private System.Windows.Forms.TextBox txtpay;
         private System.Windows.Forms.ComboBox cmbofuel;

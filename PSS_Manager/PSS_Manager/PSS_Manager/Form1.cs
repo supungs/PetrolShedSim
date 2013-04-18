@@ -89,6 +89,27 @@ namespace PSS_Manager
           
         }
 
+        private void btnprofit_Click(object sender, EventArgs e)
+        {
+            string[,] temp = msys.getProfits();
+            listView1.Items.Clear();
+            for (int row = 0; row < 2; row++)
+            {
+                ListViewItem new_item = listView1.Items.Add(temp[row, 0]);
+                new_item.SubItems.Add("");
+                new_item.SubItems.Add(temp[row, 1]);
+            }
+
+            listView1.Show();
+            this.Text = "Week Pofits";
+        }
+
+        private void btncust_Click(object sender, EventArgs e)
+        {
+            int num = msys.getNumOfCustomers();
+            MessageBox.Show("There are "+num+ " customers at pumps.","Manager");
+        }
+
 
     }
 }

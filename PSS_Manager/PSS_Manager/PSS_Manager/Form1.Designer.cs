@@ -33,18 +33,20 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.fuelOrder = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.fuelLevel = new System.Windows.Forms.Button();
             this.btnprice = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtprice = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbfuel = new System.Windows.Forms.ComboBox();
-            this.groupBox1.SuspendLayout();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnprofit = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.fuelOrder = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.fuelLevel = new System.Windows.Forms.Button();
+            this.btncust = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView1
@@ -82,55 +84,6 @@
             this.columnHeader4.Text = "Date";
             this.columnHeader4.Width = 100;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.fuelOrder);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.fuelLevel);
-            this.groupBox1.Location = new System.Drawing.Point(436, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(280, 142);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(7, 84);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 33);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Sales";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // fuelOrder
-            // 
-            this.fuelOrder.Location = new System.Drawing.Point(147, 19);
-            this.fuelOrder.Name = "fuelOrder";
-            this.fuelOrder.Size = new System.Drawing.Size(121, 33);
-            this.fuelOrder.TabIndex = 1;
-            this.fuelOrder.Text = "Fuel Orders";
-            this.fuelOrder.UseVisualStyleBackColor = true;
-            this.fuelOrder.Click += new System.EventHandler(this.fuelOrder_Click);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(88, 88);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(180, 20);
-            this.dateTimePicker1.TabIndex = 0;
-            // 
-            // fuelLevel
-            // 
-            this.fuelLevel.Location = new System.Drawing.Point(7, 19);
-            this.fuelLevel.Name = "fuelLevel";
-            this.fuelLevel.Size = new System.Drawing.Size(121, 33);
-            this.fuelLevel.TabIndex = 0;
-            this.fuelLevel.Text = "Fuel Levels";
-            this.fuelLevel.UseVisualStyleBackColor = true;
-            this.fuelLevel.Click += new System.EventHandler(this.fuelLevel_Click);
-            // 
             // btnprice
             // 
             this.btnprice.Location = new System.Drawing.Point(192, 34);
@@ -147,7 +100,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cmbfuel);
             this.groupBox2.Controls.Add(this.btnprice);
-            this.groupBox2.Location = new System.Drawing.Point(437, 161);
+            this.groupBox2.Location = new System.Drawing.Point(441, 202);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(279, 124);
             this.groupBox2.TabIndex = 3;
@@ -183,20 +136,92 @@
             this.cmbfuel.Size = new System.Drawing.Size(100, 21);
             this.cmbfuel.TabIndex = 3;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btncust);
+            this.groupBox3.Controls.Add(this.btnprofit);
+            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.fuelOrder);
+            this.groupBox3.Controls.Add(this.dateTimePicker1);
+            this.groupBox3.Controls.Add(this.fuelLevel);
+            this.groupBox3.Location = new System.Drawing.Point(441, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(279, 184);
+            this.groupBox3.TabIndex = 4;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Reports";
+            // 
+            // btnprofit
+            // 
+            this.btnprofit.Location = new System.Drawing.Point(192, 31);
+            this.btnprofit.Name = "btnprofit";
+            this.btnprofit.Size = new System.Drawing.Size(74, 33);
+            this.btnprofit.TabIndex = 6;
+            this.btnprofit.Text = "Profit";
+            this.btnprofit.UseVisualStyleBackColor = true;
+            this.btnprofit.Click += new System.EventHandler(this.btnprofit_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 89);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 33);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Sales";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // fuelOrder
+            // 
+            this.fuelOrder.Location = new System.Drawing.Point(99, 31);
+            this.fuelOrder.Name = "fuelOrder";
+            this.fuelOrder.Size = new System.Drawing.Size(74, 33);
+            this.fuelOrder.TabIndex = 5;
+            this.fuelOrder.Text = "Fuel Orders";
+            this.fuelOrder.UseVisualStyleBackColor = true;
+            this.fuelOrder.Click += new System.EventHandler(this.fuelOrder_Click);
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(87, 97);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(180, 20);
+            this.dateTimePicker1.TabIndex = 2;
+            // 
+            // fuelLevel
+            // 
+            this.fuelLevel.Location = new System.Drawing.Point(6, 31);
+            this.fuelLevel.Name = "fuelLevel";
+            this.fuelLevel.Size = new System.Drawing.Size(75, 33);
+            this.fuelLevel.TabIndex = 3;
+            this.fuelLevel.Text = "Fuel Levels";
+            this.fuelLevel.UseVisualStyleBackColor = true;
+            this.fuelLevel.Click += new System.EventHandler(this.fuelLevel_Click);
+            // 
+            // btncust
+            // 
+            this.btncust.Location = new System.Drawing.Point(6, 145);
+            this.btncust.Name = "btncust";
+            this.btncust.Size = new System.Drawing.Size(75, 33);
+            this.btncust.TabIndex = 5;
+            this.btncust.Text = "Customers";
+            this.btncust.UseVisualStyleBackColor = true;
+            this.btncust.Click += new System.EventHandler(this.btncust_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(756, 377);
+            this.ClientSize = new System.Drawing.Size(731, 334);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.listView1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Manager";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -204,11 +229,6 @@
         #endregion
 
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button fuelOrder;
-        private System.Windows.Forms.Button fuelLevel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
@@ -218,6 +238,13 @@
         private System.Windows.Forms.ComboBox cmbfuel;
         private System.Windows.Forms.TextBox txtprice;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnprofit;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button fuelOrder;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button fuelLevel;
+        private System.Windows.Forms.Button btncust;
     }
 }
 

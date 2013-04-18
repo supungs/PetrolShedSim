@@ -30,7 +30,7 @@ namespace PSS_Pump
 
   public  class Subscriber 
     {
-         static int id;
+         public static int id;
          public static float price;
          InstanceContext ins ;
          PumpServiceClient pClient;
@@ -49,7 +49,7 @@ namespace PSS_Pump
              }
              form = f;
              Random rnd = new Random();
-             id = rnd.Next(20);
+             id = rnd.Next(100);
          }
 
          public void startSubscriber()
@@ -91,7 +91,8 @@ namespace PSS_Pump
                  form.Invoke((MethodInvoker)delegate
                  {
                      form.setQuantity((float)e.LitresPumped);
-                     form.setPrice( ""+ Subscriber.price * e.LitresPumped);
+                     form.setPrice(String.Format("${0:0.00}", Subscriber.price * e.LitresPumped));
+                     
                      form.setStatus("Customer pumping");
                  });
                  pClient.pumpProgress(id, (float)e.LitresPumped);

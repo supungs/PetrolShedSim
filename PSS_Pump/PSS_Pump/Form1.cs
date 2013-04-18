@@ -41,6 +41,7 @@ namespace PSS_Pump
         {
             Subscriber sub = new Subscriber(this);
             sub.startSubscriber();
+            this.Text = "Pump" + Subscriber.id;
         }
 
        
