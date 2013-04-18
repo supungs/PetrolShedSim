@@ -190,6 +190,9 @@ namespace PSS_POS.PosService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IManagerService/getFuelOrders", ReplyAction="http://tempuri.org/IManagerService/getFuelOrdersResponse")]
         PSS_POS.PosService.FuelItem[] getFuelOrders();
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IManagerService/setPrice")]
+        void setPrice(string fueltype, float price);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -233,6 +236,10 @@ namespace PSS_POS.PosService {
         
         public PSS_POS.PosService.FuelItem[] getFuelOrders() {
             return base.Channel.getFuelOrders();
+        }
+        
+        public void setPrice(string fueltype, float price) {
+            base.Channel.setPrice(fueltype, price);
         }
     }
     

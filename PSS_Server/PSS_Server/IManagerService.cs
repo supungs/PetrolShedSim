@@ -21,6 +21,9 @@ namespace PSS_Server
 
         [OperationContract]
         FuelItem[] getFuelOrders();
+
+        [OperationContract(IsOneWay = true)]
+        void setPrice(string fueltype,float price);
     }
 
 

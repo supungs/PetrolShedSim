@@ -43,6 +43,7 @@ namespace PSS_POS
             }
             else
             {
+                poss.disconnect(posID);
                 txtPosId.Enabled = true;
                 cnctBtn.Text = "Connect";
                 grppayment.Enabled = false;
@@ -78,13 +79,6 @@ namespace PSS_POS
             pumplist.Remove(id);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            pumpReady(int.Parse(txtPosId.Text), "AA");
-            pumpUpdate(int.Parse(txtPosId.Text), 10, (float) 5.4);
-            pumpFinish(int.Parse(txtPosId.Text), 10, (float)5.4);
-        }
-
         private void txtpay_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !(e.KeyChar=='.');
@@ -97,12 +91,19 @@ namespace PSS_POS
                 try
                 {
                     poss.recordPayment(posID, cmbofuel.SelectedItem.ToString(), float.Parse(txtpay.Text));
+                    txtpay.Text = "";
                 }
                 catch
                 {
                     MessageBox.Show("Please enter a valid payment value.","Invalid value", MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void PosForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (cnctBtn.Text != "Connect")
+                poss.disconnect(posID);
         }
     }
 }

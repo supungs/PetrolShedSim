@@ -33,7 +33,7 @@ namespace PSS_Server
                     break;
                 }
             }
-            if (poslist.ContainsKey(posId))
+            if (poslist.ContainsKey(posId) && !pumptoPos.ContainsKey(pumpNo))
             {
                 posPumpCount[posId]++;
                 pumptoPos.Add(pumpNo, new Tuple(posId,new FuelItem(fueltype,0)));
@@ -52,12 +52,16 @@ namespace PSS_Server
 
         public void PumpingFinished(int pumpNo)
         {
-            int posId = pumptoPos[pumpNo].Pos;
-            posPumpCount[posId]--;
-            DataHandler.Instance.reduceFuel(pumptoPos[pumpNo].Fuel.Type, pumptoPos[pumpNo].Fuel.Amount);
-            float price = getPrice(pumptoPos[pumpNo].Fuel.Type);
-            poslist[posId].finishedPumping(pumpNo, pumptoPos[pumpNo].Fuel, price);
-            pumptoPos.Remove(pumpNo);
+            try
+            {
+                int posId = pumptoPos[pumpNo].Pos;
+                posPumpCount[posId]--;
+                DataHandler.Instance.reduceFuel(pumptoPos[pumpNo].Fuel.Type, pumptoPos[pumpNo].Fuel.Amount);
+                float price = getPrice(pumptoPos[pumpNo].Fuel.Type);
+                poslist[posId].finishedPumping(pumpNo, pumptoPos[pumpNo].Fuel, price);
+                pumptoPos.Remove(pumpNo);
+            }
+            catch { }
         }
 
 
@@ -90,6 +94,12 @@ namespace PSS_Server
             {
                 poslist.Remove(posId);
                 posPumpCount.Remove(posId);
+                try
+                {
+                    if (poslist.Count == 0)
+                        DataHandler.Instance.sendReports();
+                }
+                catch { }
             }
         }
 
@@ -98,6 +108,7 @@ namespace PSS_Server
         //---- Services for the Manager system  ----------------
         public FuelItem[] getFuelLevels()
         {
+            DataHandler.Instance.sendReports();
             return DataHandler.Instance.getFuelLevel();
         }
 
@@ -108,6 +119,7 @@ namespace PSS_Server
 
         public int getNumofCustomers()
         {
+            DataHandler.Instance.setPrice("diesel", (float)1.2);
             return pumptoPos.Count;
         }
 
@@ -116,11 +128,17 @@ namespace PSS_Server
             return DataHandler.Instance.getFuelOrders();
         }
 
+        public void setPrice(string fueltype, float price)
+        {
+            DataHandler.Instance.setPrice(fueltype, price);
+        }
+
         //common functions
         public float getPrice(string fuelType)
         {
             return DataHandler.Instance.getPrice(fuelType);
         }
+
     }
 
     class Tuple

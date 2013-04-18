@@ -39,7 +39,7 @@ namespace PSS_Manager
             int j = 0;
             for (int i = 0; i < x.Length; i++)
             {
-                if (x[i].Date == date)
+                if (x[i]!=null && x[i].Date == date)
                 {
                     fuelSales[j, 0] = x[i].Type;
                     fuelSales[j, 1] = x[i].Amount.ToString();
@@ -60,8 +60,10 @@ namespace PSS_Manager
             float unleadedVol = 0;
             float unleadedost = 0;
 
-            for (int i = 0; i < x.Length; i++)
+            for ( int i = 0; i < x.Length; i++)
             {
+                if (x[i] == null)
+                    break;
                 if (x[i].Type == "unleaded")
                 {
                     unleadedVol += x[i].Amount;
@@ -77,6 +79,44 @@ namespace PSS_Manager
             fuelOrders[1, 0] = "Diesel"; fuelOrders[1, 1] = dieselVol.ToString(); fuelOrders[1, 2] = dieselCost.ToString();
             return fuelOrders;
 
+        }
+        public String[,] getProfits()
+        {
+            float[] profit = new float[2];
+            FuelItem[] x = managerClient.getFuelOrders();
+
+            for (int i = 0; i < x.Length; i++)
+            {
+                if (x[i] == null)
+                    break;
+                int ind = 1;
+                if (x[i].Type == "unleaded") ind = 0;
+                profit[ind] -= x[i].Value;
+            }
+
+            FuelItem[] y = managerClient.getSaleData();
+            for (int i = 0; i < y.Length; i++)
+            {
+                if (y[i] == null)
+                    break;
+                int ind = 1;
+                if (y[i].Type == "unleaded") ind = 0;
+                profit[ind] += y[i].Value;
+            }
+
+            string[,] fuelProfits = new String[2, 3];
+            fuelProfits[0, 0] = "Unleaded"; fuelProfits[0, 1] = profit[0].ToString();
+            fuelProfits[1, 0] = "Diesel"; fuelProfits[1, 1] = profit[1].ToString();
+            return fuelProfits;
+        }
+
+        public int getNumOfCustomers()
+        {
+            return managerClient.getNumofCustomers();
+        }
+        public void setPrice(string fueltype, float price)
+        {
+            managerClient.setPrice(fueltype,price);
         }
 
     }
